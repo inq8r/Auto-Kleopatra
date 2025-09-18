@@ -1,0 +1,7 @@
+cffi==2.0.0
+CouchDB==1.2
+cryptography==45.0.7
+PGPy==0.6.0
+pyasn1==0.6.1
+pycparser==2.23
+watchdog==6.0.0
