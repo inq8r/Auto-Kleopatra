@@ -39,10 +39,11 @@ class FileSystemMonitor:
         )
         return handler
 
-    def start_observer(self, validator: validate.ValidateService):
+    def start_observer(self, validator: validate.ValidateService, path_to_dir: str):
         event_handler = self.create_handler(validator=validator)
         observer = Observer()
-        observer.schedule(event_handler=event_handler, path='your_path_to_tracked_folder')
+        observer.schedule(event_handler=event_handler, path=path_to_dir)
+        print(f'[ Наблюдатель запущен, отслеживаемая директория -- [{path_to_dir}] ]')
         observer.start()
 
         try:
@@ -56,7 +57,7 @@ class FileSystemMonitor:
 def __tests():
     fs_monitor = FileSystemMonitor()
     validator = validate.ValidateService()
-    fs_monitor.start_observer(validator=validator)
+    fs_monitor.start_observer(validator=validator, path_to_dir='ver_data_folder')
 
 
 if __name__ == '__main__':
