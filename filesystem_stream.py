@@ -7,7 +7,11 @@ import validate
 
 
 class Handler(RegexMatchingEventHandler):
-
+    """
+    The file system event handler.
+    It waits for the file and its signature (.sig) to appear, then runs verification.
+    """
+    
     def __init__(self, validation_service: validate.ValidateService, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.validation_service = validation_service
@@ -16,6 +20,7 @@ class Handler(RegexMatchingEventHandler):
     def check_vd_obj(self):
         if hasattr(self.vd_obj, 'file') and hasattr(self.vd_obj, 'signature_file'):
             self.validation_service.do_validate(checked_data_obj=self.vd_obj)
+            # Resetting an object to wait for a new pair
             self.vd_obj = verification_data.VerificationData()
 
     def on_created(self, event):
@@ -46,6 +51,7 @@ class FileSystemMonitor:
         print(f'[ Наблюдатель запущен, отслеживаемая директория -- [{path_to_dir}] ]')
         observer.start()
 
+        # An infinite loop for continuous operation of the observer
         try:
             while observer.is_alive():
                 time.sleep(1)
