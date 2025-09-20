@@ -12,7 +12,7 @@ class VerificationInterface:
     def _reading_file(self) -> str:
         raise NotImplementedError
 
-    def validation(self, keys: list):
+    def validation(self, keys: list | dict.values):
         raise NotImplementedError
 
 
@@ -26,7 +26,7 @@ class VerificationDisconnectedData(VerificationInterface):
             file_bytes = file.read()
             return file_bytes
 
-    def validation(self, keys: list):
+    def validation(self, keys: list | dict.values):
 
         file = self._reading_file()
 
