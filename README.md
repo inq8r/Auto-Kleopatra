@@ -7,10 +7,19 @@ This utility simplifies the process of checking incoming documents for the corre
 Данная утилита упрощает процесс проверки поступающих документов на корректность их электронной подписи. Она просматривает выбранную вами директорию на наличие новых файлов, если данное событие происходит --> файлы проверяются.
 
 ### Usage
-python main.py --path <path to the monitored folder\>
+```
+python main.py --path <path to the monitored folder>
+```
 
 ## Example
 ![gif](examples/Example_of_work.gif)
+
+## Installation
+```
+git clone https://github.com/inq8r/Auto-Kleopatra.git
+cd Auto-Kleopatra
+pip install -r requirements.txt
+```
 
 ## UML code diagram
 ![uml](CodeUML.png)
