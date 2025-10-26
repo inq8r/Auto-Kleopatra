@@ -41,12 +41,12 @@ class VerificationDisconnectedData(VerificationInterface):
             pub, _ = pgpy.PGPKey.from_blob(blob=k)
             try:
                 if pub.verify(subject=file, signature=sig):
-                    print(f'Подпись для файла {self.data_to_validate.file} действительна.')
+                    print(f'The signature for the file {self.data_to_validate.file} is valid.')
                     return
             # Skip an incorrect signature error
             except pgpy.errors.PGPError:
                 continue
-        print(f'Подпись для файла {self.data_to_validate.file} недействительна.')
+        print(f'The signature for the file {self.data_to_validate.file} is invalid.')
 
 
 class ValidateService:
