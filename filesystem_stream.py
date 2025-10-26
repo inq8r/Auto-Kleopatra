@@ -48,7 +48,7 @@ class FileSystemMonitor:
         event_handler = self.create_handler(validator=validator)
         observer = Observer()
         observer.schedule(event_handler=event_handler, path=path_to_dir)
-        print(f'[ Наблюдатель запущен, отслеживаемая директория -- [{path_to_dir}] ]')
+        print(f'[ The observer is running, the monitored directory -- [{path_to_dir}] ]')
         observer.start()
 
         # An infinite loop for continuous operation of the observer
